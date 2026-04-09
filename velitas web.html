@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JLVITTA - Tienda Online</title>
+     <!-- Favicon -->
+    <link rel="website icon" type="PNG"
+.    href="logoveli.jpeg">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #000000;
+        }
+
+        header {
+            background-color: #1B1281;
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #667eea;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #EEC7EA 0%, #CA8DCA 100%); 
+            color: white;
+            text-align: center;
+            padding: 4rem 2rem;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #EEC7EA;
+            color: white;
+            padding: 0.8rem 2rem;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn:hover {
+            background-color: #1174d1;
+        }
+
+        .btn-primary {
+            background-color: #8C86DE;
+        }
+
+        .btn-primary:hover {
+            background-color: #CA8DCA;
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        section {
+            margin-bottom: 4rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: #8C86DE;
+            border-bottom: 3px solid #1B1281;
+            padding-bottom: 0.5rem;
+        }
+
+        .catalogo {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .producto {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .producto:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        .producto-imagen {
+            width: 100%;
+            height: 200px;
+            background-color: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+        }
+
+        .producto-info {
+            padding: 1rem;
+        }
+
+        .producto-nombre {
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .producto-precio {
+            color: #667eea;
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin: 1rem 0;
+        }
+
+        .carrito-count {
+            background-color: #e74c3c;
+            color: white;
+            padding: 0.2rem 0.6rem;
+            border-radius: 50%;
+            font-size: 0.9rem;
+            margin-left: 0.5rem;
+        }
+
+        .empresa-info {
+            background-color: #ecf0f1;
+            padding: 2rem;
+            border-radius: 8px;
+        }
+
+        .empresa-info h3 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+
+        .empresa-info p {
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        .empresa-datos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .dato {
+            background: white;
+            padding: 1rem;
+            border-radius: 5px;
+            border-left: 4px solid #667eea;
+        }
+
+        .dato h4 {
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+
+        .compras {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 2rem;
+        }
+
+        .carrito-items {
+            margin-bottom: 2rem;
+        }
+
+        .carrito-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .carrito-total {
+            font-size: 1.3rem;
+            font-weight: bold;
+            text-align: right;
+            padding: 1rem;
+            background-color: #CA8DCA;
+            border-radius: 5px;
+        }
+
+        footer {
+            background-color: #1B1281;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            nav {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+             <img src="c:\Users\david\Downloads\llamalogo1.1.png"width="130" height="45" alt="Logo de la empresa" style="float: left">
+            <ul>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#catalogo">Catálogo</a></li>
+                <li><a href="#compras">Compras</a></li>
+                <li><a href="#empresa">Empresa</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero" id="inicio">
+        <h1>Bienvenidos a Nuestra Tienda Virtual</h1>
+         <h1>"Arte que ilumina el alma"</h1>
+        <p>Descubre nuestros productos de exelente calidad y precios</p>
+        <a href="#catalogo" class="btn btn-primary">Ver Catálogo</a>
+    </section>
+
+    <main>
+        <!-- Sección Catálogo -->
+        <section id="catalogo">
+            <h2>📦 Catálogo de Productos</h2>
+            <div class="catalogo">
+                <div class="producto">
+                    <div class="producto-imagen">
+                        <img src="c:\Users\david\OneDrive\Escritorio\osoflores.jpeg" alt="Flores" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="producto-info">
+                        <div class="producto-nombre">Oso de Flores</div>
+                        <p>Oso con ramo de flores en tono rosa de cera, elaborado con molde de yeso, y 
+                        esencia aromática diseñados específicamente para velas que aportan aroma </p>
+                        <div class="producto-precio">$25.000</div>
+                        <button class="btn" onclick="agregarCarrito('Oso de Flores', 25.000)">Agregar al Carrito</button>
+                    </div>
+                   
+
+                </div>
+
+                <div class="producto">
+                    <div class="producto-imagen"> <img src="c:\Users\david\OneDrive\Escritorio\virgen1.1.jpeg" alt="Virgen" style="width: 100%; height: 100%; object-fit: cover;"></div>
+                    <div class="producto-info">
+                        <div class="producto-nombre">Virgen</div>
+                        <p>Diseño de ramo de flores con una virgen en cera y detalles artificiales, con variedad de esencias aromatizadas 
+                            específicamente para velas que aportan aroma </p>
+                        <div class="producto-precio">$20.500</div>
+                        <button class="btn" onclick="agregarCarrito('Virgen', 20.500)">Agregar al Carrito</button>
+                    </div>
+                </div>
+
+                <div class="producto">
+                     <div class="producto-imagen"> <img src="c:\Users\david\OneDrive\Escritorio\gatovela.jpeg" alt="Virgen" style="width: 100%; height: 100%; object-fit: cover;"></div>
+                    <div class="producto-info">
+                        <div class="producto-nombre">Gato</div>
+                        <p>Porta vela en cerámica con oso blanco en cera, ideal para eventos corporativos al por mayor y al detal, con variedad de esencias 
+                            específicamente para velas que aportan aroma </p>
+                        <div class="producto-precio">$30.000</div>
+                        <button class="btn" onclick="agregarCarrito('Gato', 30.000)">Agregar al Carrito</button>
+                            
+
+            </div>
+        </section>
+
+        <!-- Sección Compras -->
+        <section id="compras">
+            <h2>🛒 Tu Carrito de Compras</h2>
+            <div class="compras">
+                <div class="carrito-items" id="carritoItems">
+                    <p style="text-align: center; color: #000000;">Tu carrito está vacío</p>
+                </div>
+                <div class="carrito-total">
+                    Total: $<span id="total">0.00</span>
+                </div>
+                <button class="btn btn-primary" style="width: 100%; margin-top: 1rem;" onclick="realizarCompra()">Realizar Compra</button>
+            </div>
+        </section>
+
+        <!-- Sección Empresa -->
+        <section id="empresa">
+            <h2>ℹ️ Información de la Empresa</h2>
+            <div class="empresa-info">
+                <h3>¿Quiénes somos?</h3>
+                <p>
+                    Somos un negocio familiar que nace para iluminar sus eventos especiales.Nos dedicamos a la creacion de vela 
+                    con diseños personalizados y aromas únicos, ideales para bodas, cumpleaños, eventos corporativos y más.
+                </p>
+                <p>
+                    Nuestro objetivo es satisfacer las necesidades de nuestros clientes con productos innovadores y a precios competitivos.
+                    Contamos con un equipo profesional dedicado a brindar excelente atención.
+                </p>
+
+                <div class="empresa-datos">
+                    <div class="dato">
+                        <h4>📍 Ubicación</h4>
+                        <p>Bogota-Cundinamarca<br>Ciudad, País 12345</p>
+                    </div>
+                    <div class="dato">
+                        <h4>📞 Teléfonos</h4>
+                        <p>+57 312 3145514 <br>+57 322 2740997</p>
+                    </div>
+                    <div class="dato">
+                        <h4>📧 Email</h4>
+                        <p>Jlvitta@gmail.com<br>Pqrvitta@gmail.com</p>
+                    </div>
+                    <div class="dato">
+                        <h4>🕐 Horario</h4>
+                        <p>Lunes - Viernes: 9:00 am - 6:00 pm<br>Sábado: 10:00 am - 7:00 pm</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección Contacto -->
+        <section id="contacto">
+            <h2>📬 Contáctanos</h2>
+            <form style="max-width: 600px; margin: 0 auto;">
+                <div style="margin-bottom: 1rem;">
+                    <label for="nombre" style="display: block; margin-bottom: 0.5rem;">Nombre:</label>
+                    <input type="text" id="nombre" style="width: 100%; padding: 0.5rem; border: 1px solid #ddd; border-radius: 4px;">
+                </div>
+                <div style="margin-bottom: 1rem;">
+                    <label for="email" style="display: block; margin-bottom: 0.5rem;">Email:</label>
+                    <input type="email" id="email" style="width: 100%; padding: 0.5rem; border: 1px solid #ddd; border-radius: 4px;">
+                </div>
+                <div style="margin-bottom: 1rem;">
+                    <label for="mensaje" style="display: block; margin-bottom: 0.5rem;">Mensaje:</label>
+                    <textarea id="mensaje" rows="5" style="width: 100%; padding: 0.5rem; border: 1px solid #ddd; border-radius: 4px;"></textarea>
+                </div>
+                <button type="button" class="btn btn-primary" style="width: 100%;" onclick="enviarContacto()">Enviar</button>
+            </form>
+        </section>
+    </main>
+
+    <footer id="contacto">
+        <p>&copy; 2026 JLVITTA. Todos los derechos reservados.</p>
+        <p>Síguenos en nuestras redes sociales</p>
+        <p>WhatsApp | Instagram  @jl_vitta | Tik Tok @jl_vitta</p>
+    </footer>
+
+    <script>
+        let carrito = [];
+
+        function agregarCarrito(nombre, precio) {
+            carrito.push({ nombre, precio });
+            actualizarCarrito();
+            alert(`${nombre} agregado al carrito`);
+        }
+
+        function actualizarCarrito() {
+            const itemsDiv = document.getElementById('carritoItems');
+            const totalSpan = document.getElementById('total');
+
+            if (carrito.length === 0) {
+                itemsDiv.innerHTML = '<p style="text-align: center; color: #999;">Tu carrito está vacío</p>';
+                totalSpan.textContent = '0.00';
+                return;
+            }
+
+            let html = '';
+            let total = 0;
+
+            carrito.forEach((item, index) => {
+                html += `
+                    <div class="carrito-item">
+                        <span>${item.nombre} - $${item.precio}</span>
+                        <button class="btn" onclick="eliminarDelCarrito(${index})">Eliminar</button>
+                    </div>
+                `;
+                total += item.precio;
+            });
+
+            itemsDiv.innerHTML = html;
+            totalSpan.textContent = total.toFixed(2);
+        }
+
+        function eliminarDelCarrito(index) {
+            carrito.splice(index, 1);
+            actualizarCarrito();
+        }
+
+        function realizarCompra() {
+            if (carrito.length === 0) {
+                alert('Tu carrito está vacío');
+                return;
+            }
+            alert(`Compra realizada. Total: $${carrito.reduce((sum, item) => sum + item.precio, 0).toFixed(2)}`);
+            carrito = [];
+            actualizarCarrito();
+        }
+
+        function enviarContacto() {
+            const nombre = document.getElementById('nombre').value;
+            const email = document.getElementById('email').value;
+            const mensaje = document.getElementById('mensaje').value;
+
+            if (!nombre || !email || !mensaje) {
+                alert('Por favor completa todos los campos');
+                return;
+            }
+
+            alert(`Mensaje enviado. Nos pondremos en contacto pronto en ${email}`);
+            document.getElementById('nombre').value = '';
+            document.getElementById('email').value = '';
+            document.getElementById('mensaje').value = '';
+        }
+    </script>
+</body>
+</html>
